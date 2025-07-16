@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('number')->unique();
+            // $table->string('number')->unique();
             $table->enum('status', ['pending', 'approved'])->default('pending');
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->timestamp('ordered_at')->nullable();
+            $table->timestamps();
         });
     }
 
